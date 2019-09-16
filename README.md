@@ -25,4 +25,4 @@
 
     ```
     
-    Copy created Localhost " http://127.0.0.1:8000/ " to your browser window.
+    Copy your created Localhost " http://127.0.0.1:8000/ " to your browser window.
