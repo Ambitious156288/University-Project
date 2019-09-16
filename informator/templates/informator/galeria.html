@@ -1,0 +1,35 @@
+{% extends "informator/base_photo.html" %}
+{% block content %}
+<h1>Galeria</h1>
+<div class="row">
+    {% for photo in photos %}
+    <div class="column">
+        <a class="social" href="{% url 'photo-detail' photo.id %}" style="text-align:center;">
+            <img class="rounded mx-auto d-block" src="{{ photo.zdjecie.url }}" style="height:150px; width:200px;"></img>
+            {{photo.opis }}
+        </a>
+    </div>
+    {% endfor %}
+</div>
+   {% if is_paginated %}
+
+        {% if page_obj.has_previous %}
+<a class="btn btn-outline-info mb-4" href="?page=1" style="font-family:Bahnschrift;font-weight: bold"> << </a>
+<a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}" style="font-family:Bahnschrift;font-weight: bold"> < </a>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+<a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+<a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+<a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}" style="font-family:Bahnschrift;font-weight: bold"> > </a>
+<a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}" style="font-family:Bahnschrift;font-weight: bold"> >> </a>
+        {% endif %}
+    {% endif %}
+
+{% endblock content %}

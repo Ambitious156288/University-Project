@@ -1,0 +1,7 @@
+{% extends "informator/base.html" %}
+
+{% block auth_links %}
+{% if user.is_superuser %}
+<a class="nav-item nav-link" href="{% url 'photo-create' %}">Dodaj zdj&#281cie</a>
+{% endif %}
+{% endblock auth_links %}

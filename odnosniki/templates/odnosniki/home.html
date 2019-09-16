@@ -1,0 +1,13 @@
+{% extends "homepage/base.html" %}
+{% block content %}
+    <h1>Odnosniki do Social Media</h1>
+
+<div class="social">
+    <p>Sledz nas na:</p>
+    {% for link in links %}
+    <a class="social" href="{{ link.link }}">
+        <img src="{{ link.image.url }}" alt="{{ link.name }}" ></img>
+    </a>
+    {% endfor %}
+    </div>
+{% endblock content %}
